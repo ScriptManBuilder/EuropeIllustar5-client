@@ -1706,9 +1706,59 @@ const Checkout: React.FC = () => {
                   </MembershipBenefits>
 
                   <MembershipPricing>
-                    <MembershipPrice>3-Day Free Trial → 19.99 €/month</MembershipPrice>
+                    <MembershipPrice>3-Day Free Trial → {formatPrice(membershipPrice)}/month</MembershipPrice>
                     <MembershipTrial>Cancel anytime • No commitment required</MembershipTrial>
                   </MembershipPricing>
+
+                  <div style={{
+                    marginTop: '24px',
+                    padding: '20px',
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    <h4 style={{ 
+                      color: 'white', 
+                      fontSize: '1.1rem', 
+                      fontWeight: '700',
+                      marginBottom: '12px'
+                    }}>
+                      💳 Billing Information
+                    </h4>
+                    <p style={{ 
+                      color: 'rgba(255, 255, 255, 0.95)', 
+                      fontSize: '0.95rem', 
+                      lineHeight: '1.6',
+                      margin: '0 0 12px 0'
+                    }}>
+                      <strong>You will be billed monthly at {formatPrice(membershipPrice)}</strong> unless you cancel your membership. 
+                      Your first charge will occur after the 3-day free trial ends.
+                    </p>
+                    <p style={{ 
+                      color: 'rgba(255, 255, 255, 0.95)', 
+                      fontSize: '0.95rem', 
+                      lineHeight: '1.6',
+                      margin: '0 0 12px 0'
+                    }}>
+                      <strong>Cancellation:</strong> You can cancel at any time by contacting customer service 
+                      at {CONTACT_INFO.phoneFormatted} or {CONTACT_INFO.email}. To avoid the next billing cycle, 
+                      cancel at least 24 hours before your next billing date.
+                    </p>
+                    <p style={{ 
+                      color: 'rgba(255, 255, 255, 0.95)', 
+                      fontSize: '0.9rem', 
+                      lineHeight: '1.6',
+                      margin: '0'
+                    }}>
+                      <a href="/cancellation-policy" style={{ 
+                        color: 'white', 
+                        textDecoration: 'underline',
+                        fontWeight: 'bold'
+                      }}>
+                        View full cancellation policy →
+                      </a>
+                    </p>
+                  </div>
                 </MembershipDetails>
               </MembershipSection>
             )}
@@ -1802,9 +1852,16 @@ const Checkout: React.FC = () => {
                   onChange={(e) => setAgreeToTerms(e.target.checked)}
                 />
                 <TermsText>
-                  I am 18 years or older and agree to the<a href="/terms-conditions"> Terms & Conditions</a>, <a href="/refund-policy">Refund Policy</a>. 
+                  I am 18 years or older and agree to the<a href="/terms-conditions"> Terms & Conditions</a>, <a href="/refund-policy"> Refund Policy</a>, and <a href="/cancellation-policy">Cancellation Policy</a>. 
                   I agree to pay the total amount provided on the checkout page. Upon successful payment, I will receive instant access to all course materials. 
-                  To request a refund, please contact our customer service team CST Mon-Fri (9am-6pm) at {CONTACT_INFO.phoneFormatted} or email {CONTACT_INFO.email} within 30 days of purchase. 
+                  {hasPendingMembership && (
+                    <strong style={{ display: 'block', marginTop: '10px', color: '#667eea' }}>
+                      ⚠️ VIP Membership: I understand that I will be billed {formatPrice(membershipPrice)}/month on a recurring basis after my 3-day free trial ends, 
+                      unless I cancel my membership. I can cancel at any time by contacting customer service at least 24 hours before my next billing date. 
+                      See <a href="/cancellation-policy">Cancellation Policy</a> for details.
+                    </strong>
+                  )}
+                  To request a refund, please contact our customer service team Mon-Fri (9am-6pm) at {CONTACT_INFO.phoneFormatted} or email {CONTACT_INFO.email} within 30 days of purchase. 
                   For guidelines on refunds please visit our <a href="/refund-policy">Refund Policy</a> page. 
                   Your credit card will be billed with the following descriptor: ILLUSTAR.COURSES. This is how the 
                   charge will appear on the cardholder's billing statement. Course access will be provided immediately after successful payment.

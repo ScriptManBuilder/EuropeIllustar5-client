@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { authAPI, User as ApiUser, SignupData, SigninData } from '../services/api';
 
 interface User {
   id: string;
@@ -21,13 +20,16 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Преобразование пользователя из API в формат приложения
-const transformApiUser = (apiUser: ApiUser): User => ({
-  id: apiUser.id.toString(),
-  email: apiUser.email,
-  firstName: apiUser.firstName || '',
-  lastName: apiUser.lastName || ''
-});
+// Static authentication - no backend
+const STORAGE_KEY = 'illustar_user';
+
+// Get test user credentials from environment
+const TEST_USER = {
+  email: process.env.REACT_APP_TEST_USER_EMAIL || 'test@test.com',
+  password: process.env.REACT_APP_TEST_USER_PASSWORD || '12345',
+  firstName: process.env.REACT_APP_TEST_USER_FIRSTNAME || 'Test',
+  lastName: process.env.REACT_APP_TEST_USER_LASTNAME || 'User'
+};
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -35,84 +37,77 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const initAuth = async () => {
-      setLoading(true);
-      setError(null);
-      
+    // Check if user is stored in localStorage
+    const storedUser = localStorage.getItem(STORAGE_KEY);
+    if (storedUser) {
       try {
-        if (authAPI.isAuthenticated()) {
-          const profileData = await authAPI.getProfile();
-          const transformedUser = transformApiUser(profileData.user);
-          setUser(transformedUser);
-        }
+        setUser(JSON.parse(storedUser));
       } catch (err) {
-        
-        // Проверяем тип ошибки для лучшей обработки
-        if (err instanceof Error && err.message.includes('Failed to fetch')) {
-          setError('Backend connection failed. Some features may be limited.');
-        } else {
-          setError('Authentication failed');
-        }
-        
-        // Если токен невалиден, очищаем его
-        authAPI.signout();
-        setUser(null);
-      } finally {
-        setLoading(false);
+        localStorage.removeItem(STORAGE_KEY);
       }
-    };
-
-    initAuth();
+    }
+    setLoading(false);
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
     setLoading(true);
     setError(null);
     
-    try {
-      const credentials: SigninData = { email, password };
-      const response = await authAPI.signin(credentials);
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Check test user credentials
+    if (email === TEST_USER.email && password === TEST_USER.password) {
+      const newUser: User = {
+        id: '1',
+        email: TEST_USER.email,
+        firstName: TEST_USER.firstName,
+        lastName: TEST_USER.lastName
+      };
       
-      const transformedUser = transformApiUser(response.user);
-      
-      setUser(transformedUser);
+      setUser(newUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
       setLoading(false);
       return true;
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
-      setLoading(false);
-      return false;
     }
+    
+    // Allow any other email/password combination for demo purposes
+    const newUser: User = {
+      id: Date.now().toString(),
+      email: email,
+      firstName: 'Guest',
+      lastName: 'User'
+    };
+    
+    setUser(newUser);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+    setLoading(false);
+    return true;
   };
 
   const register = async (userData: { email: string; password: string; firstName: string; lastName: string; }): Promise<boolean> => {
     setLoading(true);
     setError(null);
     
-    try {
-      const signupData: SignupData = {
-        email: userData.email,
-        password: userData.password,
-        firstName: userData.firstName,
-        lastName: userData.lastName
-      };
-      
-      const response = await authAPI.signup(signupData);
-      const transformedUser = transformApiUser(response.user);
-      
-      setUser(transformedUser);
-      setLoading(false);
-      return true;
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Registration failed');
-      setLoading(false);
-      return false;
-    }
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const newUser: User = {
+      id: Date.now().toString(),
+      email: userData.email,
+      firstName: userData.firstName,
+      lastName: userData.lastName
+    };
+    
+    setUser(newUser);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+    setLoading(false);
+    return true;
   };
 
   const logout = () => {
-    authAPI.signout();
     setUser(null);
+    localStorage.removeItem(STORAGE_KEY);
     setError(null);
   };
 

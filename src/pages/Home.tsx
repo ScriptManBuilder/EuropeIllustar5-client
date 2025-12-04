@@ -599,6 +599,193 @@ const Home: React.FC = () => {
         </ScrollingTextBanner>
       </PhotoGallerySection>
 
+      {/* VIP Membership Section */}
+      <InfoSection style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '60px 20px' }}>
+        <Container style={{ maxWidth: '900px' }}>
+          <div style={{ 
+            background: 'rgba(255, 255, 255, 0.95)', 
+            borderRadius: '24px',
+            padding: '50px',
+            textAlign: 'center',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+          }}>
+            <div style={{ 
+              display: 'inline-block',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: '8px 24px',
+              borderRadius: '20px',
+              fontSize: '0.85rem',
+              fontWeight: '600',
+              letterSpacing: '1px',
+              marginBottom: '20px',
+              textTransform: 'uppercase'
+            }}>
+              VIP Membership
+            </div>
+
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: '#2d3748',
+              marginBottom: '15px',
+              lineHeight: '1.2'
+            }}>
+              Unlock Premium Animation Courses
+            </h2>
+
+            <div style={{ 
+              fontSize: '3.5rem',
+              fontWeight: '800',
+              color: '#667eea',
+              margin: '30px 0 10px',
+              lineHeight: '1'
+            }}>
+              {formatPrice(19.99)} <span style={{ fontSize: '1.5rem', fontWeight: '600', color: '#718096' }}>/month</span>
+            </div>
+
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '15px',
+              margin: '40px 0',
+              textAlign: 'left'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ 
+                  width: '24px',
+                  height: '24px',
+                  background: '#48bb78',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  flexShrink: 0
+                }}>✓</div>
+                <span style={{ color: '#2d3748', fontSize: '1rem', fontWeight: '500' }}>3-Day Free Trial</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ 
+                  width: '24px',
+                  height: '24px',
+                  background: '#48bb78',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  flexShrink: 0
+                }}>✓</div>
+                <span style={{ color: '#2d3748', fontSize: '1rem', fontWeight: '500' }}>25% Off All Courses</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ 
+                  width: '24px',
+                  height: '24px',
+                  background: '#48bb78',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  flexShrink: 0
+                }}>✓</div>
+                <span style={{ color: '#2d3748', fontSize: '1rem', fontWeight: '500' }}>Priority Support</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ 
+                  width: '24px',
+                  height: '24px',
+                  background: '#48bb78',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  flexShrink: 0
+                }}>✓</div>
+                <span style={{ color: '#2d3748', fontSize: '1rem', fontWeight: '500' }}>Cancel Anytime</span>
+              </div>
+            </div>
+
+            <div style={{ 
+              background: '#f7fafc',
+              borderRadius: '12px',
+              padding: '20px',
+              marginBottom: '30px'
+            }}>
+              <p style={{ 
+                color: '#4a5568',
+                fontSize: '0.9rem',
+                lineHeight: '1.6',
+                margin: 0
+              }}>
+                Monthly billing unless cancelled. Cancel anytime through Account Settings or contact support. No partial refunds. 
+                <Link to="/cancellation-policy" style={{ 
+                  color: '#667eea', 
+                  textDecoration: 'none', 
+                  fontWeight: '600',
+                  marginLeft: '5px'
+                }}>
+                  View full terms →
+                </Link>
+              </p>
+            </div>
+
+            <Button 
+              as={Link} 
+              to="/products" 
+              variant="primary"
+              style={{ 
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                fontSize: '1.1rem',
+                padding: '18px 50px',
+                fontWeight: '700',
+                border: 'none',
+                borderRadius: '12px',
+                boxShadow: '0 8px 20px rgba(102, 126, 234, 0.4)',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                width: '100%',
+                maxWidth: '400px'
+              }}
+            >
+              Start Free Trial
+            </Button>
+          </div>
+        </Container>
+
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (max-width: 768px) {
+            .vip-membership-card {
+              padding: 30px 20px !important;
+            }
+            .vip-membership-card h2 {
+              font-size: 1.75rem !important;
+            }
+            .vip-membership-card .price {
+              font-size: 2.5rem !important;
+            }
+            .vip-benefits-grid {
+              grid-template-columns: 1fr !important;
+              gap: 12px !important;
+            }
+          }
+        ` }} />
+      </InfoSection>
+
       {/* Information Section */}
       <InfoSection>
         <InfoGrid>

@@ -152,8 +152,11 @@ const Account: React.FC = () => {
   );
 
   const renderCoursesSection = () => {
+    // Get test user email from environment
+    const TEST_USER_EMAIL = process.env.REACT_APP_TEST_USER_EMAIL || 'test@test.com';
+    
     // Показываем курсы только для тестового аккаунта
-    const isTestAccount = user?.email === 'test@test.com';
+    const isTestAccount = user?.email === TEST_USER_EMAIL;
     
     if (!isTestAccount) {
       return (

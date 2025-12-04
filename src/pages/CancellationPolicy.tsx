@@ -298,7 +298,7 @@ const CancellationPolicy: React.FC = () => {
             </Paragraph>
             <List>
               <ListItem>
-                <Strong>Email:</Strong> <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+                <Strong>Email:</Strong> {CONTACT_INFO.email}
               </ListItem>
               <ListItem>
                 <Strong>Phone:</Strong> {CONTACT_INFO.phoneFormatted}
@@ -480,7 +480,7 @@ const CancellationPolicy: React.FC = () => {
               VIP Membership, please contact our Customer Service Team:
             </ContactInfo>
             <ContactInfo>
-              <Strong>Email:</Strong> <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+              <Strong>Email:</Strong> {CONTACT_INFO.email}
             </ContactInfo>
             <ContactInfo>
               <Strong>Phone:</Strong> {CONTACT_INFO.phoneFormatted}

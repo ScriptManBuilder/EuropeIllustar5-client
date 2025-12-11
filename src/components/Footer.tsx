@@ -85,6 +85,30 @@ const Footer: React.FC = () => {
           <Copyright>
             Copyright  2025 {COMPANY_INFO.name}. All rights reserved. | Premium Illustration Education & Training Courses
           </Copyright>
+          <div style={{ 
+            display: 'flex', 
+            gap: '20px', 
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '20px',
+            flexWrap: 'wrap'
+          }}>
+            <img 
+              src="/images/visa.svg" 
+              alt="Visa" 
+              style={{ height: '30px', width: 'auto' }} 
+            />
+            <img 
+              src="/images/mastercard.svg" 
+              alt="Mastercard" 
+              style={{ height: '30px', width: 'auto' }} 
+            />
+            <img 
+              src="/images/sepa-logo.png" 
+              alt="SEPA" 
+              style={{ height: '30px', width: 'auto' }} 
+            />
+          </div>
         </FooterBottom>
       </FooterContent>
     </FooterWrapper>

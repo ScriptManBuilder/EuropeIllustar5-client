@@ -78,7 +78,7 @@ const Support: React.FC = () => {
       <Container>
         <SupportContent>
           <ContactSection>
-            <SectionTitle>Get in Touch</SectionTitle>
+            <SectionTitle style={{ textAlign: 'center' }}>Get in Touch</SectionTitle>
             <ContactMethodsGrid>
               <ContactCard>
                 <ContactIcon>

@@ -164,7 +164,7 @@ const TermsConditions: React.FC = () => {
         <SectionTitle>11. Governing Law</SectionTitle>
         <Paragraph>
           These terms and conditions are governed by and construed in accordance with 
-          the laws of the State of Wyoming, United States. Any disputes will be resolved in the courts of Wyoming.
+          the laws of England and Wales, United Kingdom. Any disputes will be resolved in the courts of England and Wales.
         </Paragraph>
       </Section>
 

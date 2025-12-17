@@ -81,7 +81,7 @@ const TermsConditions: React.FC = () => {
           We accept major credit and debit cards for digital illustration course purchases. Your payment information is processed securely through our payment processors using 256-bit SSL encryption.
         </Paragraph>
         <Paragraph>
-          <strong>Billing Descriptor:</strong> Charges will appear on your credit card statement as "ILLUSTAR COURSES" or "ILLUSTAR.COURSES". 
+          <strong>Billing Descriptor:</strong> Charges will appear on your credit card statement as "dan-eur.com". 
           This is how the charge will appear on your cardholder's billing statement.
         </Paragraph>
       </Section>

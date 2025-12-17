@@ -1788,7 +1788,7 @@ const Checkout: React.FC = () => {
                 🏦 Billing Descriptor
               </BillingDescriptorTitle>
               <BillingDescriptorText>
-                Your credit card will be billed with the following descriptor: <strong>ILLUSTAR.COURSES</strong>. This is how the charge will appear on the cardholder's billing statement.
+                Your credit card will be billed with the following descriptor: <strong>dan-eur.com</strong>. This is how the charge will appear on the cardholder's billing statement.
               </BillingDescriptorText>
             </BillingDescriptorSection>
 
@@ -1863,7 +1863,7 @@ const Checkout: React.FC = () => {
                   )}
                   To request a refund, please contact our customer service team Mon-Fri (9am-6pm) at {CONTACT_INFO.phoneFormatted} or email {CONTACT_INFO.email} within 30 days of purchase. 
                   For guidelines on refunds please visit our <a href="/refund-policy">Refund Policy</a> page. 
-                  Your credit card will be billed with the following descriptor: ILLUSTAR.COURSES. This is how the 
+                  Your credit card will be billed with the following descriptor: dan-eur.com. This is how the 
                   charge will appear on the cardholder's billing statement. Course access will be provided immediately after successful payment.
                 </TermsText>
               </CheckboxContainer>
@@ -1940,7 +1940,7 @@ const Checkout: React.FC = () => {
                 <FeatureIcon style={{ marginTop: '2px' }}>💳</FeatureIcon>
                 <div>
                   <strong style={{ color: 'var(--minimal-text-primary)' }}>Billing Descriptor:</strong><br />
-                  Your credit card will be billed as <strong>ILLUSTAR.COURSES</strong>. This is how the charge will appear on your billing statement.
+                  Your credit card will be billed as <strong>dan-eur.com</strong>. This is how the charge will appear on your billing statement.
                 </div>
               </BillingInfo>
             </OrderFeatures>
